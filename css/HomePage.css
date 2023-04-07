@@ -1,0 +1,32 @@
+html body{
+    margin: 0%;
+    height: 100%;
+}
+.header{
+    padding: 15px 0;
+    background-color: #FFFFFF;
+}
+.headerContent{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items:center;
+    border: 0px solid green;
+    width:80%;
+}
+.logoContent{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    border: 0px solid green;
+    width:80%;
+    margin-top: 10px;
+ }
+ .employee{
+    color: green;
+    font-weight: bold;
+ }
+ .payroll{
+    color:#42515F;
+    font-weight:bold;  
+ }
