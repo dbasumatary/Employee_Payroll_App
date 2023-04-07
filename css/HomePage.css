@@ -30,3 +30,52 @@ html body{
     color:#42515F;
     font-weight:bold;  
  }
+
+ /* UC2 */
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    min-height: 20px;
+    background-color: #e5e2e2;
+    padding: 30px 10px;
+    box-sizing: border-box;
+}
+.headerContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 25px;
+    margin: 0 auto;
+}
+.emp-detail-text{
+    font: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #36434f;
+    opacity: 1;
+}
+.emp-count{
+    background-color: #82a70c;
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 24px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 35%;
+}
+
+.addButton{
+    font: normal;
+    font-size: 16px;
+    width: 8%;
+    color: #FFFFFF;
+    opacity: 1;
+    background: #82a70c;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 18px;
+    text-decoration: none;
+    justify-content:center;
+}
