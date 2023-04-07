@@ -25,9 +25,37 @@
                 Employee Details <div class="emp-count"></div>
             </div>
             <a href="../page/Payroll_Form.html" class="addButton">
-                <span><img src="../assets/icons/add-24px.svg" alt="Add User" width="22"></span>
+                <span><img src="../assets/icons/add-24px.svg" alt="Add User" width="17"></span>
                 <span id="addLink">Add User</span>
             </a>
+        </div>
+        <!--UC3 : Table format-->
+        <div class="table-main">
+            <table id="display" class="table"> 
+                <tr>
+                    <th></th> 
+                    <th>Name</th> 
+                    <th>Gender</th> 
+                    <th>Department</th> 
+                    <th>Salary</th> 
+                    <th>Start Date</th> 
+                    <th>Actions</th>
+                </tr>
+                <tr> 
+                    <td><img class="profile" alt="" src="../assets/profile-images/Ellipse-2.png"></td> 
+                    <td>Dhondip Basumatary</td> 
+                    <td>Male</td> 
+                    <td><div class='dept-label'>HR</div>
+                        <div class='dept-label'>Finance</div>
+                    </td>
+                    <td>3000000</td>
+                    <td>21 Jun 2023</td>
+                    <td> 
+                        <img id="iconAction" alt="delete" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg">
+                        <img id="iconAction" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg"> 
+                    </td> 
+                </tr> 
+            </table>
         </div>
     </div>
 </body>
