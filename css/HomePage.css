@@ -24,11 +24,13 @@ html body{
  }
  .employee{
     color: green;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 18px;
  }
  .payroll{
     color:#42515F;
-    font-weight:bold;  
+    font-weight:bolder;
+    font-size: 17px;  
  }
 
  /* UC2 */
@@ -36,7 +38,8 @@ html body{
     display: flex;
     flex-direction: column;
     min-height: 20px;
-    background-color: #e5e2e2;
+    background-color: #d0d4d5;
+    background: linear-gradient(to right, #c0e4c9, #f49585);
     padding: 30px 10px;
     box-sizing: border-box;
 }
@@ -53,7 +56,7 @@ html body{
     font: normal;
     font-weight: bold;
     font-size: 24px;
-    color: #344453;
+    color: #0b355c;
     opacity: 1;
 }
 .emp-count{
@@ -72,7 +75,7 @@ html body{
     width: 8%;
     color: #FFFFFF;
     opacity: 1;
-    background: green;
+    background: #369317;
     border: none;
     border-radius: 5px;
     padding: 5px 18px;
@@ -88,6 +91,7 @@ html body{
     width: 100%;
     border-spacing: 0 1px;
     min-width: 800px;
+    border-spacing: 0 5px;
 }
 td, th{
     text-align: left;
@@ -97,38 +101,38 @@ td{
     font: normal;
     color: #36434f;
     opacity: 1;
+    font-size: 17px;
 }
 th{
-    background-color: #42515F;
+    background-color: #5a4bde;
     color: #FFFFFF;
     text-align: left;
     border-radius: 3px 3px 0 0;
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid red;
+    border: 1px solid black;
 }
 tr:not(:first-child){
-    background-color: #FFFFFF;
+    background-color: #fff7f7;
     border-radius: 5px;
+    margin-bottom: 2px;
 }
-td:first-child{
-    display: flex;
-    align-items: center;
+tr{
+    border-collapse: separate;
+    border-spacing: 0 15px;
 }
 td img{
     cursor: pointer;
 }
-td img:first-child{
-    margin-right: 10px;
-}
+
 .dept-label{
     display: inline-block;
-    text-align: center;
-    padding: 2px 10px;
-    background-color: #bde244;
-    border-radius: 8px;
-    font-size: 15px;
-    margin-bottom: 5px;
+    padding: 3px 10px;
+    background-color: #c0e4c9;
+    border-radius: 60%;
+    font-size: 14px;
     width: fit-content;
+    text-align: center;
+    margin-bottom: 2px;
 }
 #iconAction{
     background-color: #edf2e1;
