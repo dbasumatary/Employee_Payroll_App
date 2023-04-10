@@ -1,9 +1,9 @@
 class EmployeePayrollData {
 
     // getter and setter
-    get id() { return this.id; }
+    get id() { return this._id; }
     set id(id) {
-        this.id = id;
+        this._id = id;
     }
 
     get name() { return this._name; }
@@ -13,35 +13,35 @@ class EmployeePayrollData {
             this._name = name;
         else throw 'Name is incorrect!';
     }
-
-    get profilePic() { return this.profilePic; }
+_
+    get profilePic() { return this._profilePic; }
     set profilePic(profilePic)  {
-        this.profilePic = profilePic;
+        this._profilePic = profilePic;
     }
 
-    get gender() { return this.gender; }
+    get gender() { return this._gender; }
     set gender(gender)  {
-        this.gender = gender;
+        this._gender = gender;
     }
 
-    get department() { return this.department; }
+    get department() { return this._department; }
     set department(department)  {
-        this.department = department;
+        this._department = department;
     }
 
-    get salary() { return this.salary; }
+    get salary() { return this._salary; }
     set salary(salary) {
-        this.salary = salary;
+        this._salary = salary;
     }
 
-    get note() { return this.note; }
+    get note() { return this._note; }
     set note(note) {
-        this.note = note;
+        this._note = note;
     }
 
-    get startDate() { return this.startDate; }
+    get startDate() { return this._startDate; }
     set startDate(startDate) {
-        this.startDate = startDate;
+        this._startDate = startDate;
     }
 
     //method
@@ -49,7 +49,7 @@ class EmployeePayrollData {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const empDate = !this.startDate ? "undefined" : this.startDate.toLocaleDateString("en-US", options);
         return  "id=" + this.id +", name='" + this.name + ", gender='" + this.gender + 
-        ", profilePic='" + this.profilePic + ", department='" + this.department +
-        ", salary=" + this.salary + ", startDate='" + empDate + ", note=" + this.note;
+            ", profilePic='" + this.profilePic + ", department='" + this.department +
+            ", salary=" + this.salary + ", startDate='" + empDate + ", note=" + this.note;
     }
 }

@@ -47,15 +47,18 @@ function save() {
     let dateStr = day.value + '-' + month.value + '-' + year.value;
     const noteInput = document.getElementById("notes");
 
+    window.alert(nameInput.value +',' + picRadio.value + ',' + genderRadio.value + ',' +
+        departmentArray + ',' + salaryInputRange.value + ',' + dateStr + ',' + notes.value);
+
     let employeePayrollList = [];
     let formData = {
         name: nameInput.value,
-        image: picRadio.value,
-        genderValue: genderRadio.value,
+        profilePic: picRadio.value,
+        gender: genderRadio.value,
         department: departmentArray,
         salary: salaryInputRange.value,
-        startdate: dateStr,
-        notes: notes.value
+        startDate: dateStr,
+        note: notes.value
       };
 
     // Retrieve existing data from local storage or create a new array if it doesn't exist
@@ -63,7 +66,7 @@ function save() {
     
     // Add new form data to the array
     data.push(formData);
-  
+
     // Store the updated array back into local storage
     localStorage.setItem("formData", JSON.stringify(data));
   
