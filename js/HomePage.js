@@ -45,3 +45,40 @@ const getDeptHtml = (deptList) => {
     }
     return deptHtml;
 };
+
+
+//Delete employee details
+const remove = (row) => {
+    //the immediate parent of the row is the <td> , and the next parent of the <td> element is 
+    //the <tr> element that contains the row.
+    const rowIndex = row.parentNode.parentNode.rowIndex;
+
+    //get the id of the record to be removed from the empPayrollList array using the index of the row
+    const id = empPayrollList[rowIndex - 1]._id;
+
+    //the index of the record to be removed and the number of records to be removed(here only one)
+    empPayrollList.splice(rowIndex - 1, 1);
+    localStorage.setItem("formData", JSON.stringify(empPayrollList));
+    
+    // Update the employee count display
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
+    //re-rendering the table with the updated data.
+    createInnerHtml();
+}
+
+//Alternate method to remove details
+const remove1 = (row) => {
+    if(confirm('Do you want to delete this record?')){
+        //move up the DOM tree to the table row's parent tbody element and then to its parent table element. 
+        const rowIndex = row.parentNode.parentNode.rowIndex;
+
+        // Remove the employee from the list
+        empPayrollList.splice(rowIndex - 1, 1);
+    }
+    //updates the local storage
+    localStorage.setItem("formData", JSON.stringify(empPayrollList));
+
+    // Update the employee count display
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
+    createInnerHtml();
+}
