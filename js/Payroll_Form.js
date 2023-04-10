@@ -52,6 +52,7 @@ function save() {
 
     let employeePayrollList = [];
     let formData = {
+        id : Date.now().toString(32),
         name: nameInput.value,
         profilePic: picRadio.value,
         gender: genderRadio.value,
