@@ -1,3 +1,6 @@
+let isUpdate = false;
+let employeePayrollObj = {};
+
 const salaryValue = document.querySelector('.salary-output');
 const salaryInputRange = document.querySelector('#salary');
 const nameInput = document.querySelector('#name');
@@ -27,6 +30,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     salaryInputRange.addEventListener("input",(event) => {
     salaryValue.textContent = salaryInputRange.value;
     });
+
+    checkForUpdate();
 });
 
 // Save the details in local storage
@@ -81,6 +86,31 @@ function save() {
     notes.value = "";
 }
 
+function setForm() {
+    document.querySelector('#name').value = employeePayrollObj.name;
+    setSelectedValues("input[name='profile']", employeePayrollObj.profilePic);
+    setSelectedValues("input[name='gender']", employeePayrollObj.gender);
+    setSelectedValues("input[class='checkbox']", employeePayrollObj.department);
+    document.querySelector('#salary').value = employeePayrollObj.salary;
+    document.querySelector('.salary-output').innerHTML = employeePayrollObj.salary;
+    document.querySelector('#notes').value = employeePayrollObj.note;
+    let date = employeePayrollObj.startDate.split('-');
+    document.querySelector('#day').value = date[0];
+    document.querySelector('#month').value = date[1];
+    document.querySelector('#year').value = date[2];
+  }
+  
+  function setSelectedValues(properties, value) {
+    let allItems = document.querySelectorAll(properties);
+    allItems.forEach((item) => {
+      if (Array.isArray(value)) {
+        if (value.includes(item.value)) item.checked = true;
+      } else if (item.value === value) {
+        item.checked = true;
+      }
+    });
+  }
+
 /* Reset the Employee payroll form on clicking reset button*/
 const resetForm = ()=>{
     setValue('#name','');
@@ -104,3 +134,11 @@ const setValue = (id,value) =>{
     const element = document.querySelector(id);
     element.value = value;
 }
+
+function checkForUpdate() {
+    const empPayrollJSON = localStorage.getItem('editEmp');
+    isUpdate = empPayrollJSON ? true : false;
+    if (!isUpdate) return;
+    employeePayrollObj = JSON.parse(empPayrollJSON);
+    setForm();
+  }

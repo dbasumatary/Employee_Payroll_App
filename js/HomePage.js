@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     empPayrollList = getEmpDataFromStorage();
     document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editEmp');
 });
 
 const getEmpDataFromStorage = () => {
@@ -49,15 +50,17 @@ const getDeptHtml = (deptList) => {
 
 //Delete employee details
 const remove = (row) => {
-    //the immediate parent of the row is the <td> , and the next parent of the <td> element is 
-    //the <tr> element that contains the row.
-    const rowIndex = row.parentNode.parentNode.rowIndex;
+    if(confirm('Do you want to delete this record?')){
+        //the immediate parent of the row is the <td> , and the next parent of the <td> element is 
+        //the <tr> element that contains the row.
+        const rowIndex = row.parentNode.parentNode.rowIndex;
 
-    //get the id of the record to be removed from the empPayrollList array using the index of the row
-    const id = empPayrollList[rowIndex - 1]._id;
+        //get the id of the record to be removed from the empPayrollList array using the index of the row
+        const id = empPayrollList[rowIndex - 1]._id;
 
-    //the index of the record to be removed and the number of records to be removed(here only one)
-    empPayrollList.splice(rowIndex - 1, 1);
+        //the index of the record to be removed and the number of records to be removed(here only one)
+        empPayrollList.splice(rowIndex - 1, 1);
+    }
     localStorage.setItem("formData", JSON.stringify(empPayrollList));
     
     // Update the employee count display
@@ -82,3 +85,12 @@ const remove1 = (row) => {
     document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
 }
+
+//Edit  
+
+ function update(node) {
+    let newElement = empPayrollList.find((empData) => empData._id == node._id);
+    if (!newElement) return;
+    localStorage.setItem('editEmp', JSON.stringify(newElement));
+    window.location.href = 'Payroll_Form.html';
+  }
