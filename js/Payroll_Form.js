@@ -1,5 +1,6 @@
 let isUpdate = false;
 let employeePayrollObj = {};
+//let employeePayrollData = new EmployeePayrollData();
 
 const salaryValue = document.querySelector('.salary-output');
 const salaryInputRange = document.querySelector('#salary');
@@ -141,4 +142,6 @@ function checkForUpdate() {
     if (!isUpdate) return;
     employeePayrollObj = JSON.parse(empPayrollJSON);
     setForm();
-  }
+}
+
+ 

@@ -29,8 +29,8 @@ const createInnerHtml = () => {
                 <td>${i.salary}</td>
                 <td>${i.startDate}</td>
                 <td> 
-                    <img name="${i._id}" id="iconAction" alt="delete" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg">
-                    <img name="${i._id}" id="iconAction" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg"> 
+                    <img name="${i.id}" id="iconAction" alt="delete" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg">
+                    <img name="${i.id}" id="iconAction" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg"> 
                 </td>
             </tr>                   
         `;
@@ -70,26 +70,26 @@ const remove = (row) => {
 }
 
 //Alternate method to remove details
-const remove1 = (row) => {
-    if(confirm('Do you want to delete this record?')){
-        //move up the DOM tree to the table row's parent tbody element and then to its parent table element. 
-        const rowIndex = row.parentNode.parentNode.rowIndex;
+// const remove1 = (row) => {
+//     if(confirm('Do you want to delete this record?')){
+//         //move up the DOM tree to the table row's parent tbody element and then to its parent table element. 
+//         const rowIndex = row.parentNode.parentNode.rowIndex;
 
-        // Remove the employee from the list
-        empPayrollList.splice(rowIndex - 1, 1);
-    }
-    //updates the local storage
-    localStorage.setItem("formData", JSON.stringify(empPayrollList));
+//         // Remove the employee from the list
+//         empPayrollList.splice(rowIndex - 1, 1);
+//     }
+//     //updates the local storage
+//     localStorage.setItem("formData", JSON.stringify(empPayrollList));
 
-    // Update the employee count display
-    document.querySelector(".emp-count").textContent = empPayrollList.length;
-    createInnerHtml();
-}
+//     // Update the employee count display
+//     document.querySelector(".emp-count").textContent = empPayrollList.length;
+//     createInnerHtml();
+// }
 
 //Edit  
 
  function update(node) {
-    let newElement = empPayrollList.find((empData) => empData._id == node._id);
+    let newElement = empPayrollList.find((empData) => empData.id == node.name);
     if (!newElement) return;
     localStorage.setItem('editEmp', JSON.stringify(newElement));
     window.location.href = 'Payroll_Form.html';
