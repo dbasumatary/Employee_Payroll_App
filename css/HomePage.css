@@ -1,140 +1,166 @@
-html body{
-    margin: 0%;
-    height: 100%;
+html body {
+    margin: 0;
+    height: 100;
 }
-.header{
+
+.header {
     padding: 15px 0;
-    background-color: #FFFFFF;
+    background-color: white;
 }
-.headerContent{
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items:center;
-    border: 0px solid green;
-    width: 80%;
-}
-.logoContent{
+
+.tabular-content {
     display: flex;
     flex-direction: row;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     border: 0px solid green;
-    width:80%;
-    margin-top: 10px;
- }
- .employee{
-    color: green;
-    font-weight: bolder;
-    font-size: 18px;
- }
- .payroll{
-    color:#42515F;
-    font-weight:bolder;
-    font-size: 17px;  
- }
+}
+.logo-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
 
- /* UC2 */
-.mainContent{
+.emp-text {
+    font: normal normal bold 20px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    color: #82a70c;
+}
+.emp-payroll {
+    color: #42515f;
+}
+* {box-sizing: border-box;}
+
+/* UC-2 */
+.main-content {
     display: flex;
     flex-direction: column;
-    min-height: 20px;
+    min-height: 800px;
     background-color: #d0d4d5;
     background: linear-gradient(to right, #c0e4c9, #f49585);
     padding: 30px 10px;
     box-sizing: border-box;
 }
-.headerContent{
+
+.header-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    padding-bottom: 25px;
     margin: 0 auto;
+    padding-bottom: 25px;
 }
-.emp-detail-text{
+
+.tabular-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+.emp-detail-text {
     font: normal;
     font-weight: bold;
     font-size: 24px;
     color: #0b355c;
     opacity: 1;
 }
-.emp-count{
+
+.emp-count {
     background-color: #82a70c;
-    color: #FFFFFF;
-    font-size: 14px;
-    width: 24px;
+    color: #ffffff;
+    border-radius: 42px;
+    font-size: 16px;
+    width: 26px;
     text-align: center;
     display: inline-block;
-    border-radius: 35%;
 }
 
-.addButton{
+.add-button {
     font: normal;
     font-size: 19px;
-    width: 8%;
+    width: 11%;
     color: #FFFFFF;
     opacity: 1;
     background: #369317;
     border: none;
     border-radius: 5px;
-    padding: 5px 18px;
+    padding: 9px 16px;
     text-decoration: none;
+    cursor: pointer;
 }
 
-/* UC3 */
-.table-main{
+/* UC-3 */
+.table-main {
     width: 80%;
     margin: 0 auto;
+    overflow: auto;
 }
-.table{
+
+.table {
     width: 100%;
-    border-spacing: 0 1px;
+    border-spacing: 0 7px;
     min-width: 800px;
-    border-spacing: 0 5px;
-}
-td, th{
-    text-align: left;
-    padding: 8px 9px;
-}
-td{
-    font: normal;
-    color: #36434f;
-    opacity: 1;
-    font-size: 17px;
-}
-th{
-    background-color: #5a4bde;
-    color: #FFFFFF;
-    text-align: left;
-    border-radius: 3px 3px 0 0;
-    font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid black;
-}
-tr:not(:first-child){
-    background-color: #fff7f7;
-    border-radius: 5px;
-    margin-bottom: 2px;
 }
 tr{
     border-collapse: separate;
     border-spacing: 0 15px;
 }
-td img{
+
+td, th{
+    text-align: left;
+    padding: 8px 9px;
+}
+
+th {
+    background-color: #5a4bde;
+    color: #FFFFFF;
+    text-align: left;
+    border-radius: 3px 3px 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border: px solid black;
+}
+
+tr:not(:first-child) {
+    background-color: #fff7f7;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+td {
+    font: normal;
+    color: #36434f;
+    opacity: 1;
+    font-size: 17px;
+}
+
+td:first-child {
+    display: flex;
+    align-items: center;
+}
+
+td img:first-child {
+    margin-right: 10px;
+}
+
+td img {
     cursor: pointer;
 }
 
-.dept-label{
+.dept-label {
     display: inline-block;
     padding: 3px 10px;
     background-color: #c0e4c9;
     border-radius: 60%;
-    font-size: 14px;
+    font-size: 15px;
     width: fit-content;
     text-align: center;
     margin-bottom: 2px;
-}
-#iconAction{
-    background-color: #edf2e1;
-    border-radius: 10px;
 }

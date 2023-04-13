@@ -1,96 +1,70 @@
 let empPayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
-    empPayrollList = getEmpDataFromStorage();
+    empPayrollList = getEmployeePayrollDataFromStorage();
     document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
     localStorage.removeItem('editEmp');
 });
 
-const getEmpDataFromStorage = () => {
-    return localStorage.getItem('formData') 
-    ? JSON.parse(localStorage.getItem('formData')) : [];
-};
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ?
+                        JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
 
-/* Using Template Literal */
-const createInnerHtml = () => {   
-    const headerHtml = "<th>Profile Picture</th> <th>Name</th> <th>Gender</th> <th>Department</th>" + 
-                        "<th>Salary</th> <th>Start Date</th> <th>Actions</th>";
-    
-    //if(empPayrollList.length == 0) return;
+// Using Template literal ES6 feature.
+const createInnerHtml = () => {
+    const headerHtml = "<tr><th>Profile</th><th>Name</th><th>Gender</th><th>Department</th>" +
+                        "<th>Salary</th><th>Start Date</th><th>Actions</th></tr>";
+    if (empPayrollList.length == 0) return;
     let innerHtml = `${headerHtml}`;
-
-    for(const i of empPayrollList){
-        innerHtml = `${innerHtml}
-            <tr> 
-                <td><img class="profile" alt="" src="${i.profilePic}"></td>
-                <td>${i.name}</td> 
-                <td>${i.gender}</td> 
-                <td>${getDeptHtml(i.department)}</td>
-                <td>${i.salary}</td>
-                <td>${i.startDate}</td>
-                <td> 
-                    <img name="${i.id}" id="iconAction" alt="delete" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg">
-                    <img name="${i.id}" id="iconAction" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg"> 
-                </td>
-            </tr>                   
+    for (const empPayrollData of empPayrollList) {
+         innerHtml = `${innerHtml}
+        <tr>
+            <td><img class="profile" src="${empPayrollData._profilePic}" alt=""></td>
+            <td>${empPayrollData._name}</td>
+            <td>${empPayrollData._gender}</td>
+            <td>${getDeptHtml(empPayrollData._department)}</td>
+            <td>${empPayrollData._salary}</td>
+            <td>${empPayrollData.date}</td>
+            <td>
+                <img id="${empPayrollData._id}" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete" width="25">
+                <img id="${empPayrollData._id}" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="update" width="25">
+            </td>
+        </tr>
         `;
     }
-        document.getElementById('display').innerHTML = innerHtml;
+    document.querySelector('#table-display').innerHTML = innerHtml;
 }
-    
 
 const getDeptHtml = (deptList) => {
     let deptHtml = '';
-    for (const dept of deptList){
-        deptHtml = `${deptHtml} <div class = 'dept-label'>${dept}</div>`;
+    for (const dept of deptList) {
+        deptHtml = `${deptHtml} <div class="dept-label">${dept}</div>`
     }
     return deptHtml;
-};
+}
 
-
-//Delete employee details
-const remove = (row) => {
+// UC1 – Remove an Employee from the Payroll details.
+// Delete Data from home page as well as local storage.
+const remove = (node) => {
     if(confirm('Do you want to delete this record?')){
-        //the immediate parent of the row is the <td> , and the next parent of the <td> element is 
-        //the <tr> element that contains the row.
-        const rowIndex = row.parentNode.parentNode.rowIndex;
-
-        //get the id of the record to be removed from the empPayrollList array using the index of the row
-        const id = empPayrollList[rowIndex - 1]._id;
-
-        //the index of the record to be removed and the number of records to be removed(here only one)
-        empPayrollList.splice(rowIndex - 1, 1);
+        let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+        if (!empPayrollData) return;
+        const index = empPayrollList
+                  .map(empData => empData._id)
+                  .indexOf(empPayrollData._id);
+        empPayrollList.splice(index, 1);
     }
-    localStorage.setItem("formData", JSON.stringify(empPayrollList));
     
-    // Update the employee count display
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
     document.querySelector(".emp-count").textContent = empPayrollList.length;
-    //re-rendering the table with the updated data.
     createInnerHtml();
 }
 
-//Alternate method to remove details
-// const remove1 = (row) => {
-//     if(confirm('Do you want to delete this record?')){
-//         //move up the DOM tree to the table row's parent tbody element and then to its parent table element. 
-//         const rowIndex = row.parentNode.parentNode.rowIndex;
-
-//         // Remove the employee from the list
-//         empPayrollList.splice(rowIndex - 1, 1);
-//     }
-//     //updates the local storage
-//     localStorage.setItem("formData", JSON.stringify(empPayrollList));
-
-//     // Update the employee count display
-//     document.querySelector(".emp-count").textContent = empPayrollList.length;
-//     createInnerHtml();
-// }
-
-//Edit  
-
- function update(node) {
-    let newElement = empPayrollList.find((empData) => empData.id == node.name);
-    if (!newElement) return;
-    localStorage.setItem('editEmp', JSON.stringify(newElement));
-    window.location.href = 'Payroll_Form.html';
-  }
+// Update method
+const update = (node) => {
+    let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+    if (!empPayrollData) return;
+    localStorage.setItem('editEmp', JSON.stringify(empPayrollData));
+    window.location.href="../page/Payroll_Form.html";
+}

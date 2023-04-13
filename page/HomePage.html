@@ -4,40 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Payroll App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/HomePage.css">
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;
+    0,200;0,300;0,400;0,600;1,500&display=swap"
+    rel="stylesheet">
+    <link 
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600
+    &display=swap" rel="stylesheet">
+    <title>Employee-Payroll</title>
 </head>
 <body>
-    <header class="headerContent" id="headStyle">
-        <div class="logoContent">
-            <img src="../assets/images/logo.png" alt="EmpLogo">
+    <!-- UC1 – Employee Payroll App with Logo -->
+    <header class="header-content header">
+        <div class="logo-content">
+            <img src="../assets/images/logo.png" alt="" width = 5%>
             <div>
-                <span class="employee">EMPLOYEE</span><br>
-                <span class="payroll">PAYROLL</span>
+                <span class="emp-text">EMPLOYEE</span><br>
+                <span class="emp-text emp-payroll">PAYROLL</span>
             </div>
         </div>
     </header>
-    <!-- Header and name-->
-    <div class="mainContent">
-        <div class="headerContent">
+    <div class="main-content">
+        <!-- UC 2 – Employee Payroll Form with Header and Name -->
+        <div class="tabular-content">
             <div class="emp-detail-text">
-                Employee Details <div class="emp-count"></div>
+                Employee Details <div class="emp-count">10</div>
             </div>
-            <a href="../page/Payroll_Form.html" class="addButton">
-                <span><img src="../assets/icons/add-24px.svg" alt="Add User" width="17"></span>
-                <span id="addLink">Add User</span>
-            </a>
+            <a href="../page/Payroll_Form.html" class="add-button">
+                <img src="../assets/icons/add-24px.svg" alt="" width="15">Add User</a>
         </div>
-        <!--UC3 : Table format-->
+        <!-- UC 3 – Display Employee Details in Tabular Format -->
         <div class="table-main">
-            <table id="display" class="table"> 
+            <table id="table-display" class="table">
                 
             </table>
         </div>
     </div>
-    <script src="../js/EmployeePayrollData.js"></script>
-    <script src="../js/Payroll_Form.js"></script>
+    <script defer src="../js/EmployeePayrollData.js"></script>
     <script src="../js/HomePage.js"></script>
+    <script src="../js/Payroll_Form.js"></script>
 </body>
 </html>
